@@ -8,7 +8,7 @@ export default function Footer() {
 
     return (
         <>
-           <h1>Olá baby</h1>
+           <h1>Todos os direitos reservados</h1>
         </>
     );
 }
