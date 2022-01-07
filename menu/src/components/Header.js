@@ -9,11 +9,11 @@ export default function Header() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 700px)");
-    mediaQuery.addListener(handleMediaQueryChange);
+    mediaQuery.addEventListener('change',handleMediaQueryChange);
     handleMediaQueryChange(mediaQuery);
 
     return () => {
-      mediaQuery.removeListener(handleMediaQueryChange);
+      mediaQuery.removeEventListener('change', handleMediaQueryChange);
     };
   }, []);
 
@@ -42,7 +42,7 @@ export default function Header() {
           <a href="/">Pub</a>
           <a href="/criar-item-menu">Cardápio</a>
           <a href="/listar-item-menu">Contato</a>
-          {/* <button>DashBoard</button> */}
+          <button><a href="/dashboard">Dashboard</a></button> 
           {/* <a
               to='/services'
               className='nav-links'
