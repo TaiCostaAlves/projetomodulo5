@@ -1,18 +1,61 @@
-import React from 'react';
-
-
+/* eslint-disable jsx-a11y/accessible-emoji */
+import React, { useState, useEffect } from "react";
+import "./Header.css";
+import { CSSTransition } from "react-transition-group";
 
 export default function Header() {
+  const [isNavVisible, setNavVisibility] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 700px)");
+    mediaQuery.addListener(handleMediaQueryChange);
+    handleMediaQueryChange(mediaQuery);
 
-    return (
-        <>
+    return () => {
+      mediaQuery.removeListener(handleMediaQueryChange);
+    };
+  }, []);
 
-            <ul>
-              <li> Novo item </li>
-              <li> Menu </li>
-            </ul> 
-        </>
-    );
+  const handleMediaQueryChange = mediaQuery => {
+    if (mediaQuery.matches) {
+      setIsSmallScreen(true);
+    } else {
+      setIsSmallScreen(false);
+    }
+  };
+
+  const toggleNav = () => {
+    setNavVisibility(!isNavVisible);
+  };
+
+  return (
+    <header className="Header">
+      <img src={"../../assets/logo.png"} className="Logo" alt="logo" />
+      <CSSTransition
+        in={!isSmallScreen || isNavVisible}
+        timeout={350}
+        classNames="NavAnimation"
+        unmountOnExit
+      >
+        <nav className="Nav">
+          <a href="/">Pub</a>
+          <a href="/criar-item-menu">Cardápio</a>
+          <a href="/listar-item-menu">Contato</a>
+          {/* <button>DashBoard</button> */}
+          {/* <a
+              to='/services'
+              className='nav-links'
+              onClick={closeMobileMenu}
+            >
+              Services <i className='fas fa-caret-down' />
+            </a>
+            {dropdown && <Dropdown />} */}
+        </nav>
+      </CSSTransition>
+      <button onClick={toggleNav} className="Burger">
+        🍔
+      </button>
+    </header>
+  );
 }
-
