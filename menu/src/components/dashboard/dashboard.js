@@ -3,7 +3,7 @@ import React, { useState} from 'react';
 // import { Container } from './styles';
 
 export default function Dashboard() {
-    const [visivelSenha, setVisivelSenha] = useState(false)
+    const [visivelSenha, setVisivelSenha] = useState(true)
     
   return (
       <>
