@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React, { useState, useEffect } from "react";
 import "./Header.css";
+//import { Headers, Nav, Button} from '../css/styles'
 import { CSSTransition } from "react-transition-group";
 
 export default function Header() {
@@ -9,11 +10,11 @@ export default function Header() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 700px)");
-    mediaQuery.addListener(handleMediaQueryChange);
+    mediaQuery.addEventListener('change',handleMediaQueryChange);
     handleMediaQueryChange(mediaQuery);
 
     return () => {
-      mediaQuery.removeListener(handleMediaQueryChange);
+      mediaQuery.removeEventListener('change', handleMediaQueryChange);
     };
   }, []);
 
@@ -40,9 +41,9 @@ export default function Header() {
       >
         <nav className="Nav">
           <a href="/">Pub</a>
-          <a href="/criar-item-menu">Cardápio</a>
+          <a href="/cardapio">Cardápio</a>
           <a href="/listar-item-menu">Contato</a>
-          {/* <button>DashBoard</button> */}
+          <button><a href="/dashboard">Dashboard</a></button> 
           {/* <a
               to='/services'
               className='nav-links'
@@ -57,5 +58,33 @@ export default function Header() {
         🍔
       </button>
     </header>
+
+    // <Headers >
+    //   <img src={"../../assets/logo.png"} className="Logo" alt="logo" />
+    //   <CSSTransition
+    //     in={!isSmallScreen || isNavVisible}
+    //     timeout={350}
+    //     classNames="NavAnimation"
+    //     unmountOnExit
+    //   >
+    //     <nav>
+    //       <a href="/">Pub</a>
+    //       <a href="/criar-item-menu">Cardápio</a>
+    //       <a href="/listar-item-menu">Contato</a>
+    //       <button><a href="/dashboard">Dashboard</a></button> 
+    //       {/* <a
+    //           to='/services'
+    //           className='Nav-links'
+    //           onClick={closeMobileMenu}
+    //         >
+    //           Services <i className='fas fa-caret-down' />
+    //         </a>
+    //         {dropdown && <Dropdown />} */}
+    //     </nav>
+    //   </CSSTransition>
+    //   <button onClick={toggleNav}>
+    //     🍔
+    //   </button>
+    // </Headers>
   );
 }
