@@ -15,40 +15,44 @@ import {
 
 export default function Noticacao(props) {
     const {title, type }= props
+    console.log(props)
 
 const CardWrapperNot = styled.div`
     overflow: hidden;
-    padding: 0 0 32px;
-    margin: 48px auto 0;
-    width: 300px;
+    //padding: 0 0 5px;
+    margin: 5px auto 0;
+    width: 200px;
+    height: 30px
     font-family: Quicksand, arial, sans-serif;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
     border-radius: 5px;
   `;
   
 const CardHeaderNot = styled.header`
-    padding-top: 32px;
-    padding-bottom: 32px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   `;
   
 const CardHeadingNot = styled.h1`
-    font-size: 24px;
+    font-size: 15px;
     font-weight: bold;
     text-align: center;
+    color: #ffffff;
   `;
   return (
     <div >
-    {type === true? 
-    <CardWrapperNot>
+    {type === 'sucess'? 
+    <CardWrapperNot style={{backgroundColor: '#4dff61'}}>
       <CardHeaderNot>
-        <CardHeadingNot>{titulo}</CardHeadingNot>
+        <CardHeadingNot><i style={{color:'#ffffff', marginRight: '10px'}} class="fas fa-exclamation-circle"></i>{title}</CardHeadingNot>
       </CardHeaderNot>
-    </CardWrapperNot> : 
-    <CardWrapperNot>
+    </CardWrapperNot> : null }
+    {type === 'error'?
+    <CardWrapperNot style={{ backgroundColor: '#ff6347' }}>
       <CardHeaderNot>
-        <CardHeadingNot>{titulo}</CardHeadingNot>
+        <CardHeadingNot><i style={{color:'#ffffff', marginRight: '10px'}} class="fas fa-exclamation-circle"></i>{title}</CardHeadingNot>
       </CardHeaderNot>
-    </CardWrapperNot>}
+    </CardWrapperNot>: null}
   </div>
   );
 }

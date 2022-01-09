@@ -55,6 +55,7 @@ import {
     CardLink
 } from "../../css/styles";
 import styled from "styled-components";
+import Noticacao from '../notificacao/Notificacao'
 
 //import "./styles.css";
 
@@ -74,6 +75,8 @@ export default function Update() {
     const [legendaCategoria, setLegendaCategoria] = useState('')
     const [valorCategoria, setValorCategoria] = useState('')
     const [status, setStatus] = useState(false)
+    const [typeNotification, setTypeNotification] = useState('')
+    const [titleNotification, setTitleNotification] = useState('')
 
     useEffect(() => {
         getUserAsync()
@@ -233,7 +236,9 @@ export default function Update() {
         }
 
         if (validaValor === true || validaCategoria === true || validaProduto === true) {
-
+            mudaStatus(true , 0)
+                setTypeNotification('error')
+                setTitleNotification('Erro ao editar!')
         } else {
             const requestOptions = {
                 method: 'PUT',
@@ -241,26 +246,35 @@ export default function Update() {
                 body: JSON.stringify({ PRODUTO: produto, CATEGORIA: categoriaNome, VALOR: Number(valorNummber) })
             };
 
-            let response = await fetch(`https://app-menu-pub.herokuapp.com/menucriado/${id}`, requestOptions);
+            let response = await fetch(`https://app-menu-pub.herokuapp.com/menucriadoT/${id}`, requestOptions);
             let data = await response.json()
             if (response.status) {
-                mudaStatus()
-                aviso()
-
+                mudaStatus(true, 1)
+                setTypeNotification('sucess')
+                setTitleNotification('Editado com sucesso!')
             }else{
-                
+                mudaStatus(true , 0)
+                setTypeNotification('error')
+                setTitleNotification('Erro ao editar!')
             }
         }
     }
-    function mudaStatus() {
-        setStatus(true)
+    function mudaStatus(type, id) {
+        type === true? setStatus(true) : setStatus(false)
+        aviso(id)
     }
-    function aviso() {
+    function aviso(id) {
+        id === 1 ?
         setTimeout(() => {
             console.log("aqui")
             setStatus(false)
             window.location.href='/dashboard'
-        }, 1000)
+        }, 2000) :
+        setTimeout(() => {
+            console.log("aqui")
+            setStatus(false)
+        }, 2000)
+     
     }
     //clearTimeout(aviso)
     const Select = styled.select`
@@ -290,9 +304,13 @@ export default function Update() {
         <div >
             <CardWrapper>
                 <CardHeader>
-                    {status ?
-                        <CardHeading>Item Alterado  com sucesso!</CardHeading> :
-                        <CardHeading>Novo Item</CardHeading>}
+                    {status ? 
+                        <CardHeading><Noticacao type={typeNotification} title={titleNotification}/></CardHeading> 
+                        : 
+                        null
+                        }
+                        <CardHeading>Novo Item</CardHeading>
+                        
                 </CardHeader>
 
                 <CardBody>
