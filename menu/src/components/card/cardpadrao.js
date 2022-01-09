@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import {
-  CardWrappercostumer,
+  CardWrapper,
   CardHeader,
   CardHeading,
   CardBody,
@@ -12,7 +12,7 @@ import {
   CardOptions,
   CardOptionsNote,
   CardButton,
-  CardParagrafo,
+  CardLink
 } from "../../css/styles";
 
 
@@ -20,38 +20,33 @@ import {
 
 
 
-export default function Cardapio() {
+export default function card() {
 
-  const [menuData, setMenuData] = useState([])
-useEffect(()=>{
- // Aqui que vou chamar a API
-  
-},[])
+  const [visivelSenha, setVisivelSenha] = useState(true)
 
   const handleDrawerToggle = () => {
-    // setVisivelSenha(!visivelSenha);
+    setVisivelSenha(!visivelSenha);
 };
-
   return (
     <div >
-    <CardWrappercostumer>
+    <CardWrapper>
       <CardHeader>
-        <CardHeading>{`Drinks`}</CardHeading>
+        <CardHeading>Sign in</CardHeading>
       </CardHeader>
 
       <CardBody>
-        {/* <CardFieldset>
+        <CardFieldset>
           <CardInput placeholder="Username" type="text" required />
         </CardFieldset>
 
         <CardFieldset>
           <CardInput placeholder="E-mail" type="text" required />
-        </CardFieldset> */}
+        </CardFieldset>
 
-       {/* <CardFieldset>
+        <CardFieldset>
           <CardInput placeholder="Password" type={visivelSenha ? 'text' : 'password'} required />
           <CardIcon onClick={handleDrawerToggle} className="fa fa-eye" eye small />
-        </CardFieldset> */}
+        </CardFieldset>
 
         <CardFieldset>
           <CardOptionsNote>Or sign up with</CardOptionsNote>
@@ -71,15 +66,15 @@ useEffect(()=>{
           </CardOptions>*/}
         </CardFieldset> 
 
-        {/* <CardFieldset>
+        <CardFieldset>
           <CardButton type="button">Sign Up</CardButton>
-        </CardFieldset> */}
+        </CardFieldset>
 
         <CardFieldset>
-          <CardParagrafo>I already have an account</CardParagrafo>
+          <CardLink>I already have an account</CardLink>
         </CardFieldset>
       </CardBody>
-    </CardWrappercostumer>
+    </CardWrapper>
   </div>
   );
 }

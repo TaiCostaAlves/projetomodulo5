@@ -267,3 +267,30 @@ export const CardLink = styled.a`
     color: #777;
   }
 `;
+
+//cardcostumer================================================
+export const CardWrappercostumer = styled.div`
+  overflow: hidden;
+  padding: 0 0 32px;
+  margin: 48px auto 0;
+  width: 300px;
+  height: 400px;
+  font-family: Quicksand, arial, sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 5px;
+  
+`;
+export const CardParagrafo = styled.p`
+  display: inline-block;
+  font-size: 12px;
+  text-decoration: none;
+  color: #aaa;
+  // border-bottom: 1px solid #ddd;
+  // cursor: pointer;
+  // transition: color 0.25s ease-in;
+
+  &:hover {
+    color: #777;
+  }
+`;
+
