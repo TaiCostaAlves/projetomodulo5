@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import {
   CardWrapper,
@@ -15,14 +15,20 @@ import {
   CardLink
 } from "../../css/styles";
 
+
 //import "./styles.css";
 
 
 
 export default function Cardapio() {
+
+  const [visivelSenha, setVisivelSenha] = useState(true)
+
+  const handleDrawerToggle = () => {
+    setVisivelSenha(!visivelSenha);
+};
   return (
     <div >
-
     <CardWrapper>
       <CardHeader>
         <CardHeading>Sign in</CardHeading>
@@ -38,14 +44,14 @@ export default function Cardapio() {
         </CardFieldset>
 
         <CardFieldset>
-          <CardInput placeholder="Password" type="password" required />
-          <CardIcon className="fa fa-eye" eye small />
+          <CardInput placeholder="Password" type={visivelSenha ? 'text' : 'password'} required />
+          <CardIcon onClick={handleDrawerToggle} className="fa fa-eye" eye small />
         </CardFieldset>
 
         <CardFieldset>
           <CardOptionsNote>Or sign up with</CardOptionsNote>
 
-          <CardOptions>
+          {/* <CardOptions>
             <CardOptionsItem>
               <CardIcon className="fab fa-google" big />
             </CardOptionsItem>
@@ -57,8 +63,8 @@ export default function Cardapio() {
             <CardOptionsItem>
               <CardIcon className="fab fa-facebook" big />
             </CardOptionsItem>
-          </CardOptions>
-        </CardFieldset>
+          </CardOptions>*/}
+        </CardFieldset> 
 
         <CardFieldset>
           <CardButton type="button">Sign Up</CardButton>
