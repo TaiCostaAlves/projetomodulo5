@@ -80,7 +80,7 @@ export default function Update() {
 
     useEffect(() => {
         getUserAsync()
-    }, [])
+    },[])
 
     async function getUserAsync() {
         let response = await fetch(`https://app-menu-pub.herokuapp.com/menu/${id}`);
@@ -246,7 +246,7 @@ export default function Update() {
                 body: JSON.stringify({ PRODUTO: produto, CATEGORIA: categoriaNome, VALOR: Number(valorNummber) })
             };
 
-            let response = await fetch(`https://app-menu-pub.herokuapp.com/menucriadoT/${id}`, requestOptions);
+            let response = await fetch(`https://app-menu-pub.herokuapp.com/menucriado/${id}`, requestOptions);
             let data = await response.json()
             if (response.status) {
                 mudaStatus(true, 1)

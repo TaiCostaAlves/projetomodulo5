@@ -48,7 +48,9 @@ import {
     CardOptions,
     CardOptionsNote,
     CardButton,
-    CardLink
+    CardLink,
+    Seila,
+    //Seila
 } from "../../css/styles";
 import styled from "styled-components";
 
@@ -234,8 +236,6 @@ export default function Cadastro() {
                             <p style={{ fontSize: '0.7rem' }}>{legendaValor}</p>
                             : null}
                     </CardFieldset>
-
-
 
                     {/* <CardFieldset>
           <CardOptionsNote>Or sign up with</CardOptionsNote>

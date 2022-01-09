@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import {
   CardWrapper,
@@ -14,7 +14,8 @@ import {
   CardButton,
   CardLink
 } from "../../css/styles";
-import { login, setIdUsuario, setNomeUsuario, setTypeUsuario } from '../auth/Auth'
+import { isAuthenticated, setIdUsuario, setNomeUsuario, setTypeUsuario } from '../auth/Auth'
+
 
 
 
@@ -23,7 +24,9 @@ import { login, setIdUsuario, setNomeUsuario, setTypeUsuario } from '../auth/Aut
 // import { Container } from './styles';
 
 export default function Dashboard() {
-  
+  useEffect(()=>{
+    console.log(!!isAuthenticated())
+  },[])
 
 
   const handleDrawerToggle = () => {
@@ -33,6 +36,16 @@ export default function Dashboard() {
   const handleSubmit = () => {
   
   }
+  const handleCadastro = () => {
+   window.location.href='/criar-item-menu'
+  }
+
+  const handleEditar = () => {
+    window.location.href='/editar-item-menu'
+   }
+   const handleExcluir = () => {
+    
+   }
 
   return (
     <div >
@@ -41,15 +54,15 @@ export default function Dashboard() {
           <CardHeading>Login Pub</CardHeading>
           <CardOptions>
                 <CardOptionsItem>
-                  <CardIcon className="fas fa-edit" big />
+                  <CardIcon onClick={handleEditar} className="fas fa-edit" big />
                 </CardOptionsItem>
     
                 <CardOptionsItem>
-                  <CardIcon className="fas fa-trash-alt" big />
+                  <CardIcon onClick={handleExcluir} className="fas fa-trash-alt" big />
                 </CardOptionsItem>
     
                 <CardOptionsItem>
-                  <CardIcon className="fab fa-facebook" big />
+                  <CardIcon onClick={handleCadastro} className="fas fa-plus-circle" big />
                 </CardOptionsItem>
               </CardOptions>
         </CardHeader>

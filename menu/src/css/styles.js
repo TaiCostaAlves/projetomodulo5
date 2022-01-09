@@ -267,3 +267,5 @@ export const CardLink = styled.a`
     color: #777;
   }
 `;
+
+export const Seila = styled.a

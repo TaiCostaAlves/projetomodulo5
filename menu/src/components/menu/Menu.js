@@ -26,6 +26,7 @@ export default function Menu() {
                 <ul>
                     <li>{item.ID}</li>
                     <li>{item.PRODUTO}</li>
+                    <li>{item.CATEGORIA}</li>
                     <li>{item.VALOR}</li>
                     <button onClick={() => {deleteItemAsync(item.ID)}}>Excluir</button>
                 </ul>
