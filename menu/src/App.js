@@ -55,9 +55,9 @@ function App() {
               </RequireAuth>
             }
           />
-          {/* <Route path="/criar-item-menu" element={<Cadastro/>} />
+          <Route path="/criar-item-menu" element={<Cadastro/>} />
           <Route path="/listar-item-menu" element={<Menu/>} />
-          <Route path="/editar-item-menu/:id" element={<Update/>} /> */}
+          <Route path="/editar-item-menu/:id" element={<Update/>} /> 
           <Route path='/login' element={<Login />} />
           {/* Rota que não existem */}
           <Route path="*" element={<h1>Erro 404</h1>} />
