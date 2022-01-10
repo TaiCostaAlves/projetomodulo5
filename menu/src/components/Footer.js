@@ -8,7 +8,7 @@ export default function Footer() {
 
     return (
         <>
-           <h1>Todos os direitos reservados</h1>
+           <p class="copyright">© GROUP RESILIA 2022</p>
         </>
     );
 }

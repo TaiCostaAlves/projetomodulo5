@@ -89,7 +89,7 @@ export default function Update() {
 
         // pessa o numero como valor ao select
         switch (CATEGORIA) {
-            case 'Alimentos':
+            case 'Comida':
                 setValorCategoria(1)
                 //setCategoria('Alimentos');
                 break;
@@ -127,7 +127,7 @@ export default function Update() {
         console.log(event.target.value)
         switch (event.target.value) {
             case '1':
-                setCategoria('Alimentos');
+                setCategoria('Comida');
                 break;
             case '2':
                 setCategoria('Bebidas');
@@ -178,7 +178,7 @@ export default function Update() {
         if (categoria === '') {
             switch (valorCategoria) {
                 case 1:
-                    categoriaNome = 'Alimentos';
+                    categoriaNome = 'Comida';
                     break;
                 case 2:
                     categoriaNome = 'Bebidas';
@@ -331,7 +331,7 @@ export default function Update() {
                             <option value="" hidden>
                                 Selecione
                             </option>
-                            <option value={1}>Alimentos</option>
+                            <option value={1}>Comida</option>
                             <option value={2}>Bebidas</option>
                             <option value={3}>Porçoes</option>
                             <option value={4}>Lanches</option>

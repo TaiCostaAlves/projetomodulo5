@@ -75,7 +75,7 @@ export default function Cadastro() {
         console.log(event.target.value)
         switch (event.target.value) {
             case '1':
-                setCategoria('Alimentos');
+                setCategoria('Comida');
                 break;
             case '2':
                 setCategoria('Bebidas');
@@ -214,7 +214,7 @@ export default function Cadastro() {
                             <option value="" hidden>
                                 Selecione
                             </option>
-                            <option value={1}>Alimentos</option>
+                            <option value={1}>Comida</option>
                             <option value={2}>Bebidas</option>
                             <option value={3}>Porçoes</option>
                             <option value={4}>Lanches</option>
