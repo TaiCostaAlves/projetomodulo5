@@ -268,6 +268,7 @@ export const CardLink = styled.a`
   }
 `;
 
+
 //cardcostumer================================================
 export const GridTest = styled.div`
   display: grid;
@@ -358,4 +359,5 @@ export const CardParagrafo = styled.p`
     color: #777;
   }
 `;
+
 
