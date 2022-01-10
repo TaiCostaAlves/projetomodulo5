@@ -11,7 +11,7 @@ export default function Pub() {
         
             <div className="primeiraImg"> 
                 <img src={bar} alt="Bar" className="pub_imagem"></img>
-                <h1 className="pub_titulo">Stack Pub <br/> slogan </h1>       
+                <h1 className="pub_titulo">Stack Pub</h1>       
             </div>
 
             <div className="quemSomos"> 
