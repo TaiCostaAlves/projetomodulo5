@@ -14,7 +14,7 @@ import {
     CardButton,
     CardLink
 } from "../../css/styles";
-import { login, setIdUsuario, setNomeUsuario, setTypeUsuario } from '../auth/Auth'
+import { setLogin, setIdUsuario, setNomeUsuario, setTypeUsuario } from '../auth/Auth'
 
 
 
@@ -77,20 +77,26 @@ export default function Login() {
 
         console.log(validaEmail)
         console.log(validaSenha)
-        if(validaEmail === true || validaSenha === true){
-            login('')
+        if (validaEmail === true || validaSenha === true) {
+            setLogin('')
         } else {
-        login('124567')
-        setIdUsuario('melhores@gmail.com')
-        window.location.href="/dashboard"
+            setLogin('124567')
+            setIdUsuario('melhores@gmail.com')
+            setTimeout(() => { window.location.href = "/dashboard" }, 500)
+
         }
         //setNomeUsuario(response.data.user.name)
         //setTypeUsuario(response.data.user.external_user)
     }
 
     return (
-        <div >
-            <CardWrapper>
+        <div>
+            {/* <div style={{ backgroundColor: '#000' }}> */}
+            {/*  <div style={{ display: 'grid', gridGap:'10px', gridTemplateColumns:'1fr 1fr', width: '700px', height: '700px', marginLeft: 'auto', marginRight: 'auto', backgroundColor: '#ffffff' }}> */}
+            {/* <div style={{ gridColumn: '1', backgroundColor: "#ff6347" }}></div>
+                <div style={{ gridColumn: '2', backgroundColor: "#000000" }}></div>
+                {/* <CardWrapper style={{ gridColumn: '1'}}> */}
+            <CardWrapper >
                 <CardHeader>
                     <CardHeading>Login Pub</CardHeading>
                 </CardHeader>

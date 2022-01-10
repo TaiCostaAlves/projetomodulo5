@@ -16,24 +16,32 @@ import Login from './components/login/Login'
 
 function RequireAuth({ children, redirectTo }) {
   let isAuthenticatede = isAuthenticated();
+  console.log(isAuthenticatede)
   return isAuthenticatede ? children : <Navigate to={redirectTo} />;
 }
 
-const PrivateRoute = ({ component: Component, redirectTo, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
+function Public({ children, redirectTo }) {
+  let isAuthenticatede = false;
+  console.log(isAuthenticatede)
+  console.log(children)
+  return isAuthenticatede ? children : <Navigate to={redirectTo} />;
+}
 
-      isAuthenticated() ? (
-        <Component {...props} />
-      ) :
-        (
-          // <Navigate to={{ pathname: "/", state: { from: props.location } }} />
-          <Navigate to={redirectTo} />
-        )
-    }
-  />
-);
+// const PrivateRoute = ({ component: Component, redirectTo, ...rest }) => (
+//   <Route
+//     {...rest}
+//     render={props =>
+
+//       isAuthenticated() ? (
+//         <Component {...props} />
+//       ) :
+//         (
+//           // <Navigate to={{ pathname: "/", state: { from: props.location } }} />
+//           <Navigate to={redirectTo} />
+//         )
+//     }
+//   />
+// );
 
 
 
@@ -45,20 +53,39 @@ function App() {
         <Routes>
           <Route path="/" element={<Pub />} />
           <Route path="/cardapio" element={<Cardapio />} />
-
+          <Route path='/login' element={<Login />} />
           {/* Rotas Privadas */}
           <Route
             path="/dashboard"
             element={
               <RequireAuth redirectTo="/login">
-                <Dashboard/>
+                <Dashboard />
               </RequireAuth>
+
             }
           />
-          {/* <Route path="/criar-item-menu" element={<Cadastro/>} />
-          <Route path="/listar-item-menu" element={<Menu/>} />
-          <Route path="/editar-item-menu/:id" element={<Update/>} /> */}
-          <Route path='/login' element={<Login />} />
+           <Route
+            path="/criar-item-menu"
+            element={
+              <RequireAuth redirectTo="/login">
+                <Cadastro />
+              </RequireAuth>
+
+            }
+          />
+           <Route
+            path="/editar-item-menu/:id"
+            element={
+              <RequireAuth redirectTo="/login">
+                {<Update />}
+              </RequireAuth>
+
+            }
+          />
+
+          <Route path="/listar-item-menu" element={<Menu />} />
+          {/* <Route path="/editar-item-menu/:id" element= {<Update />}/> */}
+
           {/* Rota que não existem */}
           <Route path="*" element={<h1>Erro 404</h1>} />
         </Routes>
