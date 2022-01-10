@@ -1,4 +1,5 @@
 import React from 'react';
+import './Footer.css'
 
 
 
@@ -8,7 +9,10 @@ export default function Footer() {
 
     return (
         <>
-           <p class="copyright">© GROUP RESILIA 2022</p>
+            <div className='footer'>
+                <p className='copyright'>© GROUP RESILIA 2022</p>
+            </div>
+           
         </>
     );
 }

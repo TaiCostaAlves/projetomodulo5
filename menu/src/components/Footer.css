@@ -1,0 +1,15 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.footer{
+    background-color: #293133;
+    width: 100vw;
+    height: 15vh;
+}
+.copyright{
+    color: #ffff;
+    text-align: center;
+}
