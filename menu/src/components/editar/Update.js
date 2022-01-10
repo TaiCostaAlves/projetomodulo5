@@ -248,7 +248,7 @@ export default function Update() {
 
             let response = await fetch(`https://app-menu-pub.herokuapp.com/menucriado/${id}`, requestOptions);
             let data = await response.json()
-            if (response.status) {
+            if (response.status == 200) {
                 mudaStatus(true, 1)
                 setTypeNotification('sucess')
                 setTitleNotification('Editado com sucesso!')
@@ -301,15 +301,15 @@ export default function Update() {
 
 
     return (
-        <div >
+        <div style={{marginBottom: '35px'}}>
             <CardWrapper>
                 <CardHeader>
                     {status ? 
-                        <CardHeading><Noticacao type={typeNotification} title={titleNotification}/></CardHeading> 
+                        <CardHeading style={{marginBotton: '5px'}}><Noticacao type={typeNotification} title={titleNotification}/></CardHeading> 
                         : 
                         null
                         }
-                        <CardHeading>Novo Item</CardHeading>
+                        <CardHeading>Editar Item</CardHeading>
                         
                 </CardHeader>
 
