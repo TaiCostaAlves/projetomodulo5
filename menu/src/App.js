@@ -12,7 +12,7 @@ import Cardapio from './components/card/Cardapio'
 import { isAuthenticated, response } from "./components/auth/Auth";
 import { } from "react-router-dom";
 import Login from './components/login/Login'
-
+import Contato from './components/contato/contato'
 
 function RequireAuth({ children, redirectTo }) {
   let isAuthenticatede = isAuthenticated();
@@ -54,6 +54,7 @@ function App() {
           <Route path="/" element={<Pub />} />
           <Route path="/cardapio" element={<Cardapio />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/contato' element={<Contato/>} />
           {/* Rotas Privadas */}
           <Route
             path="/dashboard"

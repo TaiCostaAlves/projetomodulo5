@@ -1,0 +1,36 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.contato{
+    width: 100vw;
+    height: 100vh;  
+    background-color: #293133;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+ }
+
+ .titulo{
+    color: #ffff; 
+    text-align: center;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 24px;
+    letter-spacing: .02em;
+    line-height: 1.5em;
+    text-transform: uppercase;
+    margin-bottom: 3%;
+    margin-top: 3%;
+ }
+
+ .texto-contato{
+    color: #ffff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: .015em;
+    line-height: 1.5em;
+ }

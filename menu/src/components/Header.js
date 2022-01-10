@@ -59,7 +59,7 @@ export default function Header() {
         <nav className="Nav">
           <a href="/">Pub</a>
           <a href="/cardapio">Cardápio</a>
-          <a href="/listar-item-menu">Contato</a>
+          <a href="/contato">Contato</a>
           {logado ? <button onClick={handlelogoff}>Logoff</button>
           :
           <button style={{ backgroundColor:'#4dff61', boxShadow:'0px 5px 0px 0px rgba(0, 139, 69, 0.25)'}}><a href="/Login">Login</a></button>
