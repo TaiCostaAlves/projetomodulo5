@@ -36,14 +36,14 @@ color: palevioletred;
 //         font-weight: 500;
 //         transition: 0.5s;
 //         text-decoration: none;
-    
-    
+
+
 //         &:hover {
 //         transform: scale(1.1);
 //     }
 //     }
 
-    
+
 //     @media (max-width: 700px) {
 //         grid-template-rows: repeat(4, auto);
 //         grid-template-columns: none;
@@ -66,13 +66,13 @@ color: palevioletred;
 //         border-radius: 10px;
 //         cursor: pointer;
 //         transition: 70ms;
-    
+
 //     &:active {
 //         transform: translateY(3px);
 //         box-shadow: 0px 2px 0px 0px rgba(255, 0, 0, 0.25);
 //         }
 //     }
-    
+
 // }
 
 
@@ -237,7 +237,7 @@ export const CardButton = styled.button`
   display: block;
   width: 100%;
   padding: 12px 0;
-  font-family: inherit;
+    font-family: inherit;
   font-size: 14px;
   font-weight: 700;
   color: #fff;
@@ -268,4 +268,96 @@ export const CardLink = styled.a`
   }
 `;
 
-export const Seila = styled.a
+
+//cardcostumer================================================
+export const GridTest = styled.div`
+  display: grid;
+  height: 700px;
+  width:1000px;
+  grid-template-rows: 350px 350px;
+  grid-template-areas:
+    "div1, div2"
+    "div3, div4";
+    text-align: center;
+  grid-gap: 0.25rem;
+//  transition: all 0.25s ease-in-out;
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+    // grid-template-rows: 0.4fr 0.4fr 2.2fr 1.2fr 1fr;
+    grid-template-areas:
+      "div1"
+      "div2"
+      "div3"
+      "div4";
+  }
+`;
+export const CardWrappercostumer = styled.div`
+  overflow: hidden;
+  padding: 0 0 32px;
+  margin: 48px auto 0;
+  width: 300px;
+  height: 400px;
+  font-family: Quicksand, arial, sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 5px;
+   
+
+
+`;
+// export const CardWrappercostumer2 = styled.div`
+//   overflow: hidden;
+//   grid-area: div2;
+//   padding: 0 0 32px;
+//   margin: 48px auto 0;
+//   width: 300px;
+//   height: 400px;
+//   font-family: Quicksand, arial, sans-serif;
+//   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
+//   border-radius: 5px;
+
+
+
+// `;
+// export const CardWrappercostumer3 = styled.div`
+//   overflow: hidden;
+//   grid-area: div3;
+//   padding: 0 0 32px;
+//   margin: 48px auto 0;
+//   width: 300px;
+//   height: 400px;
+//   font-family: Quicksand, arial, sans-serif;
+//   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
+//   border-radius: 5px;
+
+
+
+// `;
+// export const CardWrappercostumer4 = styled.div`
+//   overflow: hidden;
+//   grid-area: div4;
+//   padding: 0 0 32px;
+//   margin: 48px auto 0;
+//   width: 300px;
+//   height: 400px;
+//   font-family: Quicksand, arial, sans-serif;
+//   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
+//   border-radius: 5px;
+
+
+
+// `;
+export const CardParagrafo = styled.p`
+  display: inline-block;
+  font-size: 12px;
+  text-decoration: none;
+  color: #aaa;
+  // border-bottom: 1px solid #ddd;
+  // cursor: pointer;
+  // transition: color 0.25s ease-in;
+
+  &:hover {
+    color: #777;
+  }
+`;
+
+
