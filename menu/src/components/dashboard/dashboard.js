@@ -16,6 +16,7 @@ import {
 } from "../../css/styles";
 import { isAuthenticated, setIdUsuario, setNomeUsuario, setTypeUsuario } from '../auth/Auth'
 import styled, { css } from "styled-components";
+import Noticacao from '../notificacao/Notificacao'
 
 
 
@@ -26,6 +27,9 @@ import styled, { css } from "styled-components";
 
 export default function Dashboard() {
   const [data, setData] = useState([])
+  const [status, setStatus] = useState(false)
+  const [typeNotification, setTypeNotification] = useState('')
+  const [titleNotification, setTitleNotification] = useState('')
 
   useEffect(() => {
     getUserAsync()
@@ -42,26 +46,45 @@ export default function Dashboard() {
       method: 'DELETE'
     })
     let data = await response.json()
-    if(response.status === 200){
-      window.location.reload()
+    if (response.status == 200) {
+      setTimeout(() => {
+        window.location.reload()
+      }, 2500)
+      mudaStatus(true, 1)
+      setTypeNotification('sucess')
+      setTitleNotification('Editado com sucesso!')
+    } else {
+      mudaStatus(true, 0)
+      setTypeNotification('error')
+      setTitleNotification('Erro ao editar!')
     }
-    // console.log(response)
-    // console.log(data)
-    // console.log(id)
+
+
   }
-  // const handleDrawerToggle = () => {
-  //   //setVisivelSenha(!visivelSenha);
-  // };
 
-  // const handleSubmit = () => {
+  function mudaStatus(type, id) {
+    type === true ? setStatus(true) : setStatus(false)
+    aviso(id)
+  }
+  function aviso(id) {
+    id === 1 ?
+      setTimeout(() => {
+        console.log("aqui")
+        setStatus(false)
+        window.location.href = '/dashboard'
+      }, 2000) :
+      setTimeout(() => {
+        console.log("aqui")
+        setStatus(false)
+      }, 2000)
 
-  // }
+  }
   const handleCadastro = () => {
     window.location.href = '/criar-item-menu'
   }
 
-  const handleEditar = () => {
-    window.location.href = '/editar-item-menu'
+  const handleEditar = (id) => {
+    window.location.href = `/editar-item-menu/${id}`
   }
 
   const GridLayout = styled.div`
@@ -74,26 +97,31 @@ export default function Dashboard() {
 `;
 
   return (
-    <div >
+    <div style={{ marginBottom: '10px' }}>
       {data.map((item) => (
-      <CardWrapper style={{ width: '500px' }}>
-        <CardHeader>
-          <CardHeading>Lista de itens</CardHeading>
-              <CardOptions>
+        <CardWrapper style={{ width: '500px' }}>
+          <CardHeader>
+            <CardHeading>Lista de itens</CardHeading>
+            <CardOptions>
               <GridLayout>
-                  <CardHeading style={{ gridArea: 'id', fontSize: '12px' }}>{item.ID}</CardHeading>
-                  <CardHeading style={{ gridArea: 'nome', fontSize: '12px' }}>{item.PRODUTO}</CardHeading>
-                  <CardHeading style={{ gridArea: 'categoria', fontSize: '12px' }}>{item.CATEGORIA}</CardHeading>
-                  <CardHeading style={{ gridArea: 'valor', fontSize: '12px' }}>{item.VALOR}</CardHeading>
-                  <CardOptionsItem style={{ gridArea: 'actions'}}>
-                    <CardIcon style={{ paddingLeft: "1.5px", paddingRight:'1.5px'}} onClick={handleEditar} className="fas fa-edit" />
-                    <CardIcon style={{ paddingLeft: "1.5px", paddingRight:'1.5px'}} onClick={() => {deleteItemAsync(item.ID)}} className="fas fa-trash-alt" />
-                    <CardIcon style={{ paddingLeft: "1.5px", paddingRight:'1.5px'}} onClick={handleCadastro} className="fas fa-plus-circle" />
-                  </CardOptionsItem>
-                  </GridLayout>
-              </CardOptions>
-        </CardHeader>
-      </CardWrapper>
+                <CardHeading style={{ gridArea: 'id', fontSize: '12px' }}>{item.ID}</CardHeading>
+                <CardHeading style={{ gridArea: 'nome', fontSize: '12px' }}>{item.PRODUTO}</CardHeading>
+                <CardHeading style={{ gridArea: 'categoria', fontSize: '12px' }}>{item.CATEGORIA}</CardHeading>
+                <CardHeading style={{ gridArea: 'valor', fontSize: '12px' }}>{item.VALOR}</CardHeading>
+                <CardOptionsItem style={{ gridArea: 'actions' }}>
+                  <CardIcon style={{ paddingLeft: "1.5px", paddingRight: '1.5px' }} onClick={() => { handleEditar(item.ID) }} className="fas fa-edit" />
+                  <CardIcon style={{ paddingLeft: "1.5px", paddingRight: '1.5px' }} onClick={() => { deleteItemAsync(item.ID) }} className="fas fa-trash-alt" />
+                  <CardIcon style={{ paddingLeft: "1.5px", paddingRight: '1.5px' }} onClick={handleCadastro} className="fas fa-plus-circle" />
+                </CardOptionsItem>
+              </GridLayout>
+            </CardOptions>
+            {status ?
+              <CardHeading style={{ marginBotton: '5px' }}><Noticacao type={typeNotification} title={titleNotification} /></CardHeading>
+              :
+              null
+            }
+          </CardHeader>
+        </CardWrapper>
       ))}
     </div>
   );

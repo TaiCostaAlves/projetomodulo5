@@ -90,7 +90,7 @@ export default function Login() {
     }
 
     return (
-        <div>
+        <div style={{marginBottom: '19px'}}>
             {/* <div style={{ backgroundColor: '#000' }}> */}
             {/*  <div style={{ display: 'grid', gridGap:'10px', gridTemplateColumns:'1fr 1fr', width: '700px', height: '700px', marginLeft: 'auto', marginRight: 'auto', backgroundColor: '#ffffff' }}> */}
             {/* <div style={{ gridColumn: '1', backgroundColor: "#ff6347" }}></div>

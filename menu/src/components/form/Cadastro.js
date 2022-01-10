@@ -53,6 +53,7 @@ import {
     //Seila
 } from "../../css/styles";
 import styled from "styled-components";
+import Noticacao from '../notificacao/Notificacao'
 
 //import "./styles.css";
 
@@ -69,6 +70,10 @@ export default function Cadastro() {
     const [legendaProduto, setLegendaProduto] = useState('')
     const [legendaCategoria, setLegendaCategoria] = useState('')
     const [valorCategoria, setValorCategoria] = useState('')
+    const [status, setStatus] = useState(false)
+    const [typeNotification, setTypeNotification] = useState('')
+    const [titleNotification, setTitleNotification] = useState('')
+
 
     const handleChangeSelect = (event) => {
         setValorCategoria(event.target.value)
@@ -153,6 +158,9 @@ export default function Cadastro() {
         }
 
         if (validaValor === true || validaCategoria === true || validaProduto === true) {
+            mudaStatus(true , 0)
+            setTypeNotification('error')
+            setTitleNotification('Erro ao cadastrar!')
 
         } else {
             const requestOptions = {
@@ -163,8 +171,34 @@ export default function Cadastro() {
 
             let response = await fetch('https://app-menu-pub.herokuapp.com/cria-menu', requestOptions);
             let data = await response.json()
-            console.log(data)
+            if (response.status == 200) {
+                mudaStatus(true, 1)
+                setTypeNotification('sucess')
+                setTitleNotification('Cadastrado com sucesso!')
+            }else{
+                mudaStatus(true , 0)
+                setTypeNotification('error')
+                setTitleNotification('Erro ao cadastrar!')
+            }
         }
+    }
+
+    function mudaStatus(type, id) {
+        type === true? setStatus(true) : setStatus(false)
+        aviso(id)
+    }
+    function aviso(id) {
+        id === 1 ?
+        setTimeout(() => {
+            console.log("aqui")
+            setStatus(false)
+            window.location.href='/dashboard'
+        }, 2000) :
+        setTimeout(() => {
+            console.log("aqui")
+            setStatus(false)
+        }, 2000)
+     
     }
     const Select = styled.select`
     width: 100%;
@@ -193,6 +227,11 @@ export default function Cadastro() {
         <div >
             <CardWrapper>
                 <CardHeader>
+                {status ? 
+                        <CardHeading style={{marginBotton: '5px'}}><Noticacao type={typeNotification} title={titleNotification}/></CardHeading> 
+                        : 
+                        null
+                        }
                     <CardHeading>Novo Item</CardHeading>
                 </CardHeader>
 

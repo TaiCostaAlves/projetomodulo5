@@ -4,6 +4,7 @@ import "./Header.css";
 //import { Headers, Nav, Button} from '../css/styles'
 import { CSSTransition } from "react-transition-group";
 import { isAuthenticated, logout } from "./auth/Auth";
+import barril from '../assets/barrel.png'
 
 export default function Header() {
   const [isNavVisible, setNavVisibility] = useState(false);
@@ -49,7 +50,7 @@ export default function Header() {
 
   return (
     <header className="Header">
-      <img src={"../../assets/logo.png"} className="Logo" alt="logo" />
+      <img src={barril} className="Logo" alt="logo" />
       <CSSTransition
         in={!isSmallScreen || isNavVisible}
         timeout={350}
