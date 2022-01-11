@@ -349,7 +349,7 @@ export default function Cardapio() {
                                         <CardHeading style={{ gridArea: 'id', fontSize: '12px' }}>{item.ID}</CardHeading>
                                         <CardHeading style={{ gridArea: 'nome', fontSize: '12px' }}>{item.PRODUTO}</CardHeading>
                                         <CardHeading style={{ gridArea: 'categoria', fontSize: '12px' }}>{item.CATEGORIA}</CardHeading>
-                                        <CardHeading style={{ gridArea: 'valor', fontSize: '12px' }}>{item.VALOR}</CardHeading>
+                                        <CardHeading style={{ gridArea: 'valor', fontSize: '12px' }}>{`R$ ${item.VALOR.toFixed(2)}`}</CardHeading>
                                         {/* <CardOptionsItem style={{ gridArea: 'actions' }}>
                                     <CardIcon style={{ paddingLeft: "1.5px", paddingRight: '1.5px' }} className="fas fa-edit" />
                                     <CardIcon style={{ paddingLeft: "1.5px", paddingRight: '1.5px' }} className="fas fa-trash-alt" />
@@ -375,7 +375,7 @@ export default function Cardapio() {
                                         <CardHeading style={{ gridArea: 'id', fontSize: '12px' }}>{item.ID}</CardHeading>
                                         <CardHeading style={{ gridArea: 'nome', fontSize: '12px' }}>{item.PRODUTO}</CardHeading>
                                         <CardHeading style={{ gridArea: 'categoria', fontSize: '12px' }}>{item.CATEGORIA}</CardHeading>
-                                        <CardHeading style={{ gridArea: 'valor', fontSize: '12px' }}>{item.VALOR}</CardHeading>
+                                        <CardHeading style={{ gridArea: 'valor', fontSize: '12px' }}>{`R$ ${item.VALOR.toFixed(2)}`}</CardHeading>
                                         {/* <CardOptionsItem style={{ gridArea: 'actions' }}>
                                     <CardIcon style={{ paddingLeft: "1.5px", paddingRight: '1.5px' }} className="fas fa-edit" />
                                     <CardIcon style={{ paddingLeft: "1.5px", paddingRight: '1.5px' }} className="fas fa-trash-alt" />
