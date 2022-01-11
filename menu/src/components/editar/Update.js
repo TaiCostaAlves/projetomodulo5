@@ -38,21 +38,21 @@
 // }
 
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import { useParams } from 'react-router-dom'
 import {
     CardWrapper,
     CardHeader,
     CardHeading,
     CardBody,
-    CardIcon,
+    // CardIcon,
     CardFieldset,
     CardInput,
-    CardOptionsItem,
-    CardOptions,
-    CardOptionsNote,
+    // CardOptionsItem,
+    // CardOptions,
+    // CardOptionsNote,
     CardButton,
-    CardLink
+    // CardLink
 } from "../../css/styles";
 import styled from "styled-components";
 import Noticacao from '../notificacao/Notificacao'
@@ -110,11 +110,11 @@ export default function Update() {
         }
         // converte numero para string
         let valorString = VALOR.toFixed(2).toString()
-        let semVirgula = ''
+        //let semVirgula = ''
         // troca virgula por ponto
         if (valorString.includes('.')) {
             console.log("to aqui")
-            semVirgula =
+            //semVirgula =
                 setValor(valorString.replace('.', ','))
         }
         setProduto(PRODUTO)

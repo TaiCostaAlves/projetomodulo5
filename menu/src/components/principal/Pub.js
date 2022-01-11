@@ -3,12 +3,14 @@ import './pub.css'
 import home from '../../assets/home.jpg'
 import bar from '../../assets/bar.jpg'
 import Loading from '../loading/Loading'
+import { logout } from '../auth/Auth';
 
 export default function Pub() {
 
     const [isOpen, setIsOpen] = useState(true)
 
     useEffect(() => {
+        logout()
         setTimeout(() => { 
             setIsOpen(false)
         }, 2000) 

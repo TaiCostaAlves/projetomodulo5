@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
 import {
   CardWrapper,
   CardHeader,
   CardHeading,
-  CardBody,
   CardIcon,
-  CardFieldset,
-  CardInput,
   CardOptionsItem,
   CardOptions,
-  CardOptionsNote,
-  CardButton,
-  CardLink
 } from "../../css/styles";
-import { isAuthenticated, setIdUsuario, setNomeUsuario, setTypeUsuario } from '../auth/Auth'
-import styled, { css } from "styled-components";
+import { isAuthenticated } from '../auth/Auth'
+import styled  from "styled-components";
 import Noticacao from '../notificacao/Notificacao'
 
 
@@ -30,6 +23,7 @@ export default function Dashboard() {
   const [status, setStatus] = useState(false)
   const [typeNotification, setTypeNotification] = useState('')
   const [titleNotification, setTitleNotification] = useState('')
+  const [idStatus, setIdStatus] = useState(0)
 
   useEffect(() => {
     getUserAsync()
@@ -45,18 +39,20 @@ export default function Dashboard() {
     let response = await fetch(`https://app-menu-pub.herokuapp.com/excluir/${id}`, {
       method: 'DELETE'
     })
-    let data = await response.json()
-    if (response.status == 200) {
+    //let data = await response.json()
+    if (response.status === 200) {
       setTimeout(() => {
         window.location.reload()
       }, 2500)
+      setIdStatus(id)
       mudaStatus(true, 1)
       setTypeNotification('sucess')
-      setTitleNotification('Editado com sucesso!')
+      setTitleNotification('Removido com sucesso!')
     } else {
+      setIdStatus(id)
       mudaStatus(true, 0)
       setTypeNotification('error')
-      setTitleNotification('Erro ao editar!')
+      setTitleNotification('Erro ao remover!')
     }
 
 
@@ -108,18 +104,19 @@ export default function Dashboard() {
                 <CardHeading style={{ gridArea: 'nome', fontSize: '12px' }}>{item.PRODUTO}</CardHeading>
                 <CardHeading style={{ gridArea: 'categoria', fontSize: '12px' }}>{item.CATEGORIA}</CardHeading>
                 <CardHeading style={{ gridArea: 'valor', fontSize: '12px' }}>{`R$ ${item.VALOR.toFixed(2)}`}</CardHeading>
-                <CardOptionsItem style={{ gridArea: 'actions' }}>
+                <CardOptionsItem style={{ marginLeft: '3px', gridArea: 'actions' }}>
                   <CardIcon style={{ paddingLeft: "1.5px", paddingRight: '1.5px' }} onClick={() => { handleEditar(item.ID) }} className="fas fa-edit" />
                   <CardIcon style={{ paddingLeft: "1.5px", paddingRight: '1.5px' }} onClick={() => { deleteItemAsync(item.ID) }} className="fas fa-trash-alt" />
                   <CardIcon style={{ paddingLeft: "1.5px", paddingRight: '1.5px' }} onClick={handleCadastro} className="fas fa-plus-circle" />
                 </CardOptionsItem>
-              </GridLayout>
-            </CardOptions>
-            {status ?
+                {status && idStatus === item.ID?
               <CardHeading style={{ marginBotton: '5px' }}><Noticacao type={typeNotification} title={titleNotification} /></CardHeading>
               :
               null
             }
+              </GridLayout>
+            </CardOptions>
+           
           </CardHeader>
         </CardWrapper>
       ))}
