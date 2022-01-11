@@ -5,7 +5,7 @@ import Menu from './components/menu/Menu'
 import Cadastro from './components/form/Cadastro'
 import Update from './components/editar/Update'
 import Pub from './components/principal/Pub'
-import Dashboard from './components/dashboard/Dashboard'
+import Dashboard from './components/dashboard/dashboard'
 import Cardapio from './components/card/Cardapio'
 //import PrivateRoute from './components/auth/PrivateRoute'
 //import { Component } from 'react'
@@ -13,6 +13,7 @@ import { isAuthenticated, response } from "./components/auth/Auth";
 import { } from "react-router-dom";
 import Login from './components/login/Login'
 import Contato from './components/contato/contato'
+
 
 function RequireAuth({ children, redirectTo }) {
   let isAuthenticatede = isAuthenticated();
