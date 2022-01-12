@@ -10,7 +10,7 @@ export default function Pub() {
     const [isOpen, setIsOpen] = useState(true)
 
     useEffect(() => {
-        logout()
+        //logout()
         setTimeout(() => { 
             setIsOpen(false)
         }, 2000) 
