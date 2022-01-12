@@ -80,22 +80,34 @@ export default function Update() {
 
     useEffect(() => {
         getUserAsync()
-    },[])
+    }, [])
 
     async function getUserAsync() {
         let response = await fetch(`https://app-menu-pub.herokuapp.com/menu/${id}`);
         let data = await response.json()
         const { ID, PRODUTO, CATEGORIA, VALOR } = data.menus[0]
-
+        console.log(CATEGORIA)
         // pessa o numero como valor ao select
         switch (CATEGORIA) {
             case 'Comida':
                 setValorCategoria(1)
+
                 //setCategoria('Alimentos');
                 break;
             case 'Bebidas':
                 //setCategoria('Bebidas');
                 setValorCategoria(2)
+
+                break;
+            case 'BEBIDA':
+                //setCategoria('Bebidas');
+                setValorCategoria(2)
+
+                break;
+            case 'Bebidas':
+                //setCategoria('Bebidas');
+                setValorCategoria(2)
+
                 break;
             case 'Porçoes':
                 //setCategoria('Porçoes');
@@ -115,7 +127,7 @@ export default function Update() {
         if (valorString.includes('.')) {
             console.log("to aqui")
             //semVirgula =
-                setValor(valorString.replace('.', ','))
+            setValor(valorString.replace('.', ','))
         }
         setProduto(PRODUTO)
 
@@ -236,9 +248,9 @@ export default function Update() {
         }
 
         if (validaValor === true || validaCategoria === true || validaProduto === true) {
-            mudaStatus(true , 0)
-                setTypeNotification('error')
-                setTitleNotification('Erro ao editar!')
+            mudaStatus(true, 0)
+            setTypeNotification('error')
+            setTitleNotification('Erro ao editar!')
         } else {
             const requestOptions = {
                 method: 'PUT',
@@ -252,29 +264,29 @@ export default function Update() {
                 mudaStatus(true, 1)
                 setTypeNotification('sucess')
                 setTitleNotification('Editado com sucesso!')
-            }else{
-                mudaStatus(true , 0)
+            } else {
+                mudaStatus(true, 0)
                 setTypeNotification('error')
                 setTitleNotification('Erro ao editar!')
             }
         }
     }
     function mudaStatus(type, id) {
-        type === true? setStatus(true) : setStatus(false)
+        type === true ? setStatus(true) : setStatus(false)
         aviso(id)
     }
     function aviso(id) {
         id === 1 ?
-        setTimeout(() => {
-            console.log("aqui")
-            setStatus(false)
-            window.location.href='/dashboard'
-        }, 2000) :
-        setTimeout(() => {
-            console.log("aqui")
-            setStatus(false)
-        }, 2000)
-     
+            setTimeout(() => {
+                console.log("aqui")
+                setStatus(false)
+                window.location.href = '/dashboard'
+            }, 2000) :
+            setTimeout(() => {
+                console.log("aqui")
+                setStatus(false)
+            }, 2000)
+
     }
     //clearTimeout(aviso)
     const Select = styled.select`
@@ -301,16 +313,16 @@ export default function Update() {
 
 
     return (
-        <div style={{marginBottom: '35px'}}>
+        <div style={{ marginBottom: '35px' }}>
             <CardWrapper>
                 <CardHeader>
-                    {status ? 
-                        <CardHeading style={{marginBotton: '5px'}}><Noticacao type={typeNotification} title={titleNotification}/></CardHeading> 
-                        : 
+                    {status ?
+                        <CardHeading style={{ marginBotton: '5px' }}><Noticacao type={typeNotification} title={titleNotification} /></CardHeading>
+                        :
                         null
-                        }
-                        <CardHeading>Editar Item</CardHeading>
-                        
+                    }
+                    <CardHeading>Editar Item</CardHeading>
+
                 </CardHeader>
 
                 <CardBody>
@@ -333,8 +345,8 @@ export default function Update() {
                             </option>
                             <option value={1}>Comida</option>
                             <option value={2}>Bebidas</option>
-                            <option value={3}>Porçoes</option>
-                            <option value={4}>Lanches</option>
+                            {/* <option value={3}>Porçoes</option>
+                            <option value={4}>Lanches</option> */}
                         </Select>
                         {errorCategoria ?
                             <p style={{ fontSize: '0.7rem' }}>{legendaCategoria}</p>

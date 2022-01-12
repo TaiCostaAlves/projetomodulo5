@@ -255,8 +255,8 @@ export default function Cadastro() {
                             </option>
                             <option value={1}>Comida</option>
                             <option value={2}>Bebidas</option>
-                            <option value={3}>Porçoes</option>
-                            <option value={4}>Lanches</option>
+                            {/* <option value={3}>Porçoes</option>
+                            <option value={4}>Lanches</option> */}
                         </Select>
                         {errorCategoria ?
                             <p style={{ fontSize: '0.7rem' }}>{legendaCategoria}</p>
