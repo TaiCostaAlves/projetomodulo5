@@ -380,7 +380,7 @@ export default function Cardapio() {
                                 {/* </> : 
                                 <div style={{width:"200px", height:'300px'}}>
                                 <Loading />
-                                </div>} */}
+                                </div>} */} finalizado
                             </CardOptions>
                         </CardHeader>
                     </CardWrapper1>
