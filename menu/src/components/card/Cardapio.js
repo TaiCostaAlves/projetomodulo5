@@ -232,47 +232,66 @@
 //       <div style={{ backgroundColor: '#000' }}>
 
 //       </div>
-      
+
 //     //</div >
 //   );
 // }
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom";
 import {
-    CardWrapper,
+    // CardWrapper,
     CardHeader,
     CardHeading,
-    CardBody,
-    CardIcon,
-    CardFieldset,
-    CardInput,
-    CardOptionsItem,
+    // CardBody,
+    // CardIcon,
+    // CardFieldset,
+    // CardInput,
+    // CardOptionsItem,
     CardOptions,
-    CardOptionsNote,
-    CardButton,
-    CardLink
+    // CardOptionsNote,
+    // CardButton,
+    // CardLink
 } from "../../css/styles";
 //import { isAuthenticated, setIdUsuario, setNomeUsuario, setTypeUsuario } from '../auth/Auth'
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import myImage from '../../assets/comida-cardapio.jpg';
+// import Loading from '../loading/Loading'
 
 
 
 export default function Cardapio() {
-    const [data, setData] = useState([])
+    //const [data, setData] = useState([])
     const [dataFiltradaBebidas, setDataFiltradaBebidas] = useState([])
     const [dataFiltradaComidas, setDataFiltradaComidas] = useState([])
-    useEffect(() => { getUserAsync() }, [])
+    //const [visivelLista, setVisivelLista] = useState(false)
+    useEffect(() => {
+        setTimeout(() => {
+            getUserAsync() 
+        }, 2000);
+        
+    }, [])
 
+    useEffect(() => {
+        verificaData()
+    })
+    function verificaData() {
+        if(dataFiltradaBebidas.length !== 0) {
+            //setVisivelLista(true)
+        }
+    }
+
+    
     async function getUserAsync() {
+        
         let response = await fetch(`https://app-menu-pub.herokuapp.com/menu`);
         let data = await response.json()
         const dataFiltradaBebida = data.menus.filter((item) => item.CATEGORIA == 'Bebidas' || item.CATEGORIA == 'BEBIDA')
         const dataFiltradaComida = data.menus.filter((item) => item.CATEGORIA == 'Comida')
+        
         setDataFiltradaBebidas(dataFiltradaBebida)
         setDataFiltradaComidas(dataFiltradaComida)
         console.log(data.menus)
-        setData(data.menus)
+        //setData(data.menus)
     }
     // const deleteItemAsync = async (id) => {
     //     let response = await fetch(`https://app-menu-pub.herokuapp.com/excluir/${id}`, {
@@ -317,7 +336,7 @@ export default function Cardapio() {
    grid-template-columns: 1fr 1fr;
  `;
 
- const CardWrapper1 = styled.div`
+    const CardWrapper1 = styled.div`
   overflow: hidden;
   padding: 0 0 10px;
   margin: 10px auto 0;
@@ -330,20 +349,21 @@ export default function Cardapio() {
     return (
         <div>
             <CardWrapper1 style={{ width: '800px' }}>
-                <img style={{width:'100%', height: '200px' }} src={myImage}></img>
+                <img style={{ width: '100%', height: '200px' }} src={myImage}></img>
                 <GridGeral >
                     <CardWrapper1 style={{ gridArea: 'comida', width: '350px' }}>
                         <CardHeader>
                             <CardHeading>Comidas</CardHeading>
                             <CardOptions>
                                 <GridLayout>
-                                  
-
                                     <CardHeading style={{ gridArea: 'id', fontSize: '12px' }}>id</CardHeading>
                                     <CardHeading style={{ gridArea: 'nome', fontSize: '12px' }}>Nome</CardHeading>
                                     <CardHeading style={{ gridArea: 'categoria', fontSize: '12px' }}>Categoria</CardHeading>
                                     <CardHeading style={{ gridArea: 'valor', fontSize: '12px' }}>Valor</CardHeading>
+                                     
                                 </GridLayout>
+                                {/* {visivelLista ?
+                                <> */}
                                 {dataFiltradaComidas.map((item) => (
                                     <GridLayout>
                                         <CardHeading style={{ gridArea: 'id', fontSize: '12px' }}>{item.ID}</CardHeading>
@@ -357,6 +377,10 @@ export default function Cardapio() {
                                 </CardOptionsItem> */}
                                     </GridLayout>
                                 ))}
+                                {/* </> : 
+                                <div style={{width:"200px", height:'300px'}}>
+                                <Loading />
+                                </div>} */}
                             </CardOptions>
                         </CardHeader>
                     </CardWrapper1>
